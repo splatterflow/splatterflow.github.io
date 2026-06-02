@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- flung droplets -->
+  <circle cx="22"  cy="40"  r="5"   fill="#eac035"/>
+  <circle cx="99"  cy="33"  r="4"   fill="#3fb950"/>
+  <circle cx="93"  cy="92"  r="6"   fill="#79b8ff"/>
+  <circle cx="36"  cy="99"  r="3.5" fill="#e24b4a"/>
+  <circle cx="106" cy="62"  r="2.6" fill="#90c93a"/>
+  <circle cx="14"  cy="70"  r="2.6" fill="#ef9f27"/>
+  <!-- main splat cluster -->
+  <circle cx="46"  cy="47"  r="15"  fill="#eac035"/>
+  <circle cx="74"  cy="49"  r="19"  fill="#3fb950"/>
+  <circle cx="58"  cy="63"  r="27"  fill="#79b8ff"/>
+  <circle cx="71"  cy="76"  r="12"  fill="#e24b4a"/>
+  <circle cx="40"  cy="70"  r="9"   fill="#ef9f27"/>
+</svg>

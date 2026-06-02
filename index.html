@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Splatter Software</title>
+<meta name="description" content="Splatter Software builds focused, privacy-respecting apps for iPhone and Mac.">
+<link rel="icon" href="assets/splatter.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #0b0f14;
+    --panel: #121821;
+    --panel-hover: #161e29;
+    --text: #e7eef7;
+    --muted: #8aa0b6;
+    --line: #1f2a36;
+    --accent: #79b8ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(121,184,255,0.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 0%, rgba(63,185,80,0.07), transparent 55%),
+      var(--bg);
+    min-height: 100vh;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 76px 0 28px; text-align: center; }
+  .logo { width: 84px; height: 84px; margin-bottom: 20px; }
+  h1 { font-size: 2.4rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); font-size: 1.1rem; margin: 0 auto; max-width: 560px; }
+
+  section { padding: 26px 0; }
+  h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 0 0 16px; }
+
+  .cards { display: grid; gap: 14px; }
+  .card {
+    display: flex; gap: 18px; align-items: center;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 16px; padding: 20px 22px;
+    color: inherit; text-decoration: none;
+    transition: background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  a.card:hover { background: var(--panel-hover); border-color: #2b3a4a; transform: translateY(-1px); }
+  .card img.icon {
+    flex: 0 0 auto; width: 64px; height: 64px; border-radius: 15px; display: block;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 6px 18px rgba(0,0,0,0.35);
+  }
+  .card .body { flex: 1; }
+  .card .body h3 { margin: 0 0 4px; font-size: 1.15rem; }
+  .card .body p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .card .meta { font-size: 0.8rem; color: var(--accent); margin-top: 6px; display: inline-block; }
+  .card .soon { font-size: 0.8rem; color: var(--muted); margin-top: 6px; display: inline-block; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  footer {
+    margin-top: 28px; padding: 26px 0 56px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 0.85rem; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="logo" src="assets/splatter.svg" alt="Splatter Software logo" width="84" height="84">
+    <h1>Splatter Software</h1>
+    <p class="tagline">We make simple, private, well-crafted apps for iPhone and Mac.</p>
+  </header>
+
+  <section>
+    <h2>Apps</h2>
+    <div class="cards">
+
+      <a class="card" href="https://www.jobsnail.app">
+        <img class="icon" src="assets/jobsnail-icon.png" alt="JobSnail icon">
+        <div class="body">
+          <h3>JobSnail</h3>
+          <p>A job application tracker for Mac — manage applications and interviews, track progress, and stay organized through your search.</p>
+          <span class="meta">jobsnail.app &rsaquo;</span>
+        </div>
+      </a>
+
+      <div class="card">
+        <img class="icon" src="assets/dbmeter-icon.png" alt="dB Meter icon">
+        <div class="body">
+          <h3>dB Meter</h3>
+          <p>A precise, beautifully designed decibel sound-level meter for iPhone. Measure, track, and protect your hearing — all on-device.</p>
+          <span class="soon">Coming soon to the App Store</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="links">
+      <a href="mailto:contact.splatterapps@gmail.com">contact.splatterapps@gmail.com</a>
+      <a href="https://github.com/splatterapps">GitHub</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Legal</h2>
+    <div class="links">
+      <a href="dBMeter/privacy-policy.html">dB Meter — Privacy Policy</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Splatter Software. All rights reserved.
+  </footer>
+
+</div>
+</body>
+</html>
