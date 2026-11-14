@@ -140,7 +140,18 @@
 
   <section>
     <h2>Apps</h2>
-    <div class="cards">
+    <!-- Fallback only. The script at the bottom rebuilds these cards from the cross-promo
+         manifest (splatterflow/apps), so a new app appears here when its entry goes active. -->
+    <div class="cards" id="cards">
+
+      <a class="card" href="https://apps.apple.com/app/id6827105990">
+        <img class="icon" src="assets/thaw-icon.png" alt="Thaw icon">
+        <div class="body">
+          <h3>Thaw</h3>
+          <p>Something to say when a conversation stalls. Hundreds of icebreakers and conversation threads for dates, dinners, and new friends — all on-device.</p>
+          <div class="meta-row"><span class="platform">iPhone</span><span class="meta">App Store ›</span></div>
+        </div>
+      </a>
 
       <a class="card" href="https://apps.apple.com/us/app/db-meter-decibel-sound-level/id6767850405">
         <img class="icon" src="assets/dbmeter-icon.png" alt="dB Meter icon">
@@ -181,7 +192,8 @@
 
   <footer>
     &copy; 2026 Splatterflow. All rights reserved.
-    <div class="legal">
+    <div class="legal" id="legal">
+      <a href="Thaw/privacy-policy.html">Thaw Privacy</a>
       <a href="dBMeter/privacy-policy.html">dB Meter Privacy</a>
       <a href="PracticeKit/privacy-policy.html">Practice Kit Privacy</a>
     </div>
@@ -194,6 +206,47 @@
     document.documentElement.dataset.theme = t;
     localStorage.setItem('sfTheme', t);
   }
+
+  const MANIFEST = 'https://raw.githubusercontent.com/splatterflow/apps/main/cross-promo/manifest.json';
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+  function card(app) {
+    const web = app.web || {};
+    const name = web.name || app.name;
+    const a = el('a', 'card');
+    a.href = web.url || 'https://apps.apple.com/app/id' + app.appStoreId;
+    const img = el('img', 'icon');
+    img.alt = name + ' icon';
+    img.src = 'assets/' + app.id + '-icon.png';
+    img.onerror = () => { img.onerror = null; if (app.iconURL) img.src = app.iconURL; };
+    const body = el('div', 'body');
+    body.append(el('h3', null, name), el('p', null, web.description || app.tagline || ''));
+    const platforms = (app.platforms || ['ios']).map(p => p === 'mac' ? 'Mac' : 'iPhone').sort();
+    const row = el('div', 'meta-row');
+    row.append(el('span', 'platform', platforms.join(' · ')),
+               el('span', 'meta', (web.url ? new URL(web.url).hostname.replace(/^www\./, '') : 'App Store') + ' ›'));
+    body.append(row);
+    a.append(img, body);
+    return a;
+  }
+  fetch(MANIFEST, { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(m => {
+      const apps = (m.apps || []).filter(a => a.active !== false).reverse();
+      if (!apps.length) return;
+      document.getElementById('cards').replaceChildren(...apps.map(card));
+      const legal = apps.filter(a => a.web && a.web.privacy).map(a => {
+        const l = el('a', null, (a.web.name || a.name) + ' Privacy');
+        l.href = a.web.privacy;
+        return l;
+      });
+      if (legal.length) document.getElementById('legal').replaceChildren(...legal);
+    })
+    .catch(() => {});
 </script>
 </body>
 </html>
